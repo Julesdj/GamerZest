@@ -1,5 +1,6 @@
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Game } from "../hooks/useGames";
+import PlatformIconList from "./PlatformIconList";
 
 interface GameCardProps {
     game: Game;
@@ -17,6 +18,11 @@ function GameCard({ game }: GameCardProps) {
             <CardHeader>
                 <CardTitle>{game.name}</CardTitle>
             </CardHeader>
+            <CardContent className="flex gap-2 flex-wrap">
+                <PlatformIconList
+                    platforms={game.parent_platforms.map((p) => p.platform)}
+                />
+            </CardContent>
         </Card>
     );
 }
